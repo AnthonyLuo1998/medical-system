@@ -5,7 +5,7 @@ import "antd/dist/reset.css";
 import store from "./store";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import { WithAuthPage } from "./auth/WithAuthPage";
+import { WithAuthPage } from "./authComponents/WithAuthPage";
 import "./styles/common.css";
 
 const root = ReactDOM.createRoot(
