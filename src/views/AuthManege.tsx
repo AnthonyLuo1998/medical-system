@@ -4,7 +4,7 @@ import React from "react";
 import { Table } from "antd";
 import type { ColumnsType } from "antd/es/table";
 
-export default function UserManage() {
+export default function AuthManege() {
   return (
     <Container>
       <SearchBar></SearchBar>

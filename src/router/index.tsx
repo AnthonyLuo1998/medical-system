@@ -1,28 +1,13 @@
-import { createBrowserRouter } from "react-router-dom";
-import type { RouteObject } from "react-router-dom";
-import { UserManage } from "../views/UserManage";
-const commonRoute: RouteObject[] = [
-  {
-    path: "/",
-    element: <div>Hello world!</div>,
-  },
-  {
-    path: "/user",
-    element: <UserManage />,
-  },
-];
+import { useRoutes } from "react-router-dom";
+import { filterRoutes } from "./utils";
+import { authRoute, commonRoute } from "./routes.config";
+import { useSelector } from "react-redux";
 
-// const asyncRoute: RouteObject[] = [
-//   {
-//     path: "/admin",
-//     element: <div>admin</div>,
-//   },
-//   {
-//     path: "/setting",
-//     element: <div>admin</div>,
-//   },
-// ];
-
-const router = createBrowserRouter(commonRoute);
-
-export { router };
+export function useAppRoutes() {
+  // const cloneRoutes = JSON.parse(JSON.stringify(authRoute));
+  const { routes } = useSelector((state: any) => state.auth);
+  // 权限过滤
+  filterRoutes(authRoute, routes);
+  console.log(authRoute);
+  return useRoutes([...authRoute, ...commonRoute]);
+}
